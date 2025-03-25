@@ -45,4 +45,11 @@ public class PagamentoService {
         pagamentoRepository.deleteById(id);
     }
 
+    public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) {
+        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
+        pagamento.setId(id);
+        pagamento = pagamentoRepository.save(pagamento);
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
 }
